@@ -816,4 +816,522 @@
 
   .form-control {
     background: var(--card);
-    border: 1p
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    resize: vertical;
+  }
+  .form-control:focus { border-color: rgba(0,229,255,0.4); }
+  .form-control::placeholder { color: var(--muted); }
+
+  textarea.form-control { min-height: 130px; }
+
+  .form-submit {
+    background: var(--accent);
+    color: #080a0f;
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .form-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { color: var(--muted); font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .about-visual { display: none; }
+    .portfolio-item:nth-child(1) { grid-column: span 12; }
+    .portfolio-item:nth-child(2),
+    .portfolio-item:nth-child(3),
+    .portfolio-item:nth-child(4),
+    .portfolio-item:nth-child(5) { grid-column: span 6; }
+    .process-step:not(:last-child)::after { display: none; }
+    .tattoo-banner { text-align: center; justify-content: center; }
+    .tattoo-banner::before { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .section-inner { padding: 4rem 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item { grid-column: span 1 !important; }
+    .tattoo-banner { padding: 2.5rem 1.5rem; }
+    h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LP<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#uslugi">Usługi</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#o-mnie">O mnie</a></li>
+    <li><a href="tattoo.html">Tatuaże</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+  <a href="#uslugi" onclick="toggleMobileNav()">Usługi</a>
+  <a href="#portfolio" onclick="toggleMobileNav()">Portfolio</a>
+  <a href="#cennik" onclick="toggleMobileNav()">Cennik</a>
+  <a href="#o-mnie" onclick="toggleMobileNav()">O mnie</a>
+  <a href="tattoo.html" onclick="toggleMobileNav()">Tatuaże 🖋</a>
+  <a href="#kontakt" onclick="toggleMobileNav()">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Dostępny teraz</div>
+    <h1>Reklamy które<br><span class="accent">przyciągają</span><br>klientów</h1>
+    <p class="hero-sub">Tworzę profesjonalne reklamy wideo i grafiki reklamowe z pomocą AI — szybko, efektywnie i w przystępnej cenie. Dla lokalnych firm i małych biznesów.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Zamów projekt ↗</a>
+      <a href="#portfolio" class="btn-outline">Zobacz realizacje</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="reveal">
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Czas realizacji</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">AI</div>
+      <div class="stat-label">Najnowsze narzędzia</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Prawa autorskie dla Ciebie</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">PL</div>
+      <div class="stat-label">Treści po polsku</div>
+    </div>
+  </div>
+</div>
+
+<!-- USŁUGI -->
+<section id="uslugi">
+  <div class="section-inner">
+    <div class="section-tag reveal">Oferta</div>
+    <h2 class="reveal">Co mogę dla Ciebie<br>zrobić</h2>
+    <p class="section-sub reveal">Kompleksowa obsługa wizualna Twojego biznesu — od pomysłu do gotowego materiału reklamowego.</p>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">🎬</span>
+        <div class="service-title">Reklamy Wideo</div>
+        <div class="service-desc">Krótkie, angażujące spoty reklamowe gotowe na Instagram Reels, TikTok, YouTube Shorts. Generowane i montowane z użyciem AI.</div>
+        <div class="service-tags"><span class="tag">Reels</span><span class="tag">TikTok</span><span class="tag">Shorts</span></div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🎨</span>
+        <div class="service-title">Grafiki Reklamowe</div>
+        <div class="service-desc">Profesjonalne banery, posty social media, grafiki promocyjne i wizualizacje produktów. Dopasowane do Twojej marki.</div>
+        <div class="service-tags"><span class="tag">Instagram</span><span class="tag">Facebook</span><span class="tag">Banery</span></div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">✍️</span>
+        <div class="service-title">Copywriting AI</div>
+        <div class="service-desc">Teksty reklamowe, hasła, opisy produktów i scenariusze wideo. Skuteczne komunikaty, które sprzedają.</div>
+        <div class="service-tags"><span class="tag">Hasła</span><span class="tag">Opisy</span><span class="tag">Skrypty</span></div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">📱</span>
+        <div class="service-title">Social Media Pack</div>
+        <div class="service-desc">Kompletny pakiet materiałów na start kampanii: grafiki, posty, stories i krótkie wideo w spójnej stylistyce.</div>
+        <div class="service-tags"><span class="tag">Pakiet</span><span class="tag">Stories</span><span class="tag">Kampania</span></div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🛍️</span>
+        <div class="service-title">Wizualizacje Produktów</div>
+        <div class="service-desc">Atrakcyjne mockupy i zdjęcia produktowe tworzone z pomocą AI — idealne do sklepu online i reklam.</div>
+        <div class="service-tags"><span class="tag">Mockup</span><span class="tag">E-commerce</span><span class="tag">Produkt</span></div>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🚀</span>
+        <div class="service-title">Konsultacja AI</div>
+        <div class="service-desc">Pomagam dobrać najlepsze rozwiązania AI dla Twojej firmy — jak automatyzować marketing i tworzyć treści szybciej.</div>
+        <div class="service-tags"><span class="tag">Strategia</span><span class="tag">AI</span><span class="tag">Automatyzacja</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">Proces</div>
+    <h2 class="reveal">Jak wygląda współpraca</h2>
+    <p class="section-sub reveal">Prosto, szybko i bez zbędnych komplikacji.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Brief</div>
+        <div class="step-desc">Opowiadasz mi o biznesie, celu reklamy i grupie docelowej. Możemy to zrobić przez wiadomość lub rozmowę.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Pomysł</div>
+        <div class="step-desc">Przygotowuję koncepcję, styl wizualny i teksty reklamowe dopasowane do Twojej branży.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Realizacja</div>
+        <div class="step-desc">Tworzę grafiki, wideo lub komplet materiałów za pomocą narzędzi AI i montażu.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Poprawki</div>
+        <div class="step-desc">Wprowadzasz uwagi, a ja dopracowuję projekt do wersji gotowej do publikacji.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-tag reveal">Portfolio</div>
+    <h2 class="reveal">Przykładowe realizacje</h2>
+    <p class="section-sub reveal">Miejsce na Twoje projekty — poniższe kafelki można zastąpić prawdziwymi realizacjami, miniaturami wideo lub case studies.</p>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span class="icon">🎬</span><span>Reklama wideo — restauracja</span></div>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Spot dla restauracji</div><div class="overlay-type">Video · Social Media</div></div></div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span class="icon">🎨</span><span>Grafika promocyjna</span></div>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Promo Post</div><div class="overlay-type">Grafika · Instagram</div></div></div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span class="icon">🛍️</span><span>Produkt AI</span></div>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Wizualizacja produktu</div><div class="overlay-type">E-commerce</div></div></div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span class="icon">📱</span><span>Stories Pack</span></div>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Pakiet Stories</div><div class="overlay-type">Social Media</div></div></div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-placeholder"><span class="icon">✍️</span><span>Kampania tekstowa</span></div>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Copywriting AI</div><div class="overlay-type">Teksty reklamowe</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="cennik" class="process-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">Cennik</div>
+    <h2 class="reveal">Pakiety dla firm</h2>
+    <p class="section-sub reveal">Przejrzyste ceny i szybka realizacja. Każdy pakiet można dopasować do potrzeb.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="plan-name">Start</div>
+        <div class="plan-price">199<small> zł</small></div>
+        <div class="plan-desc">Pojedyncza grafika reklamowa lub post do social mediów.</div>
+        <ul class="plan-features">
+          <li>1 grafika reklamowa</li>
+          <li>2 warianty projektu</li>
+          <li>1 tura poprawek</li>
+          <li>Format pod Instagram/Facebook</li>
+        </ul>
+        <a href="#kontakt" class="plan-btn plan-btn-outline">Wybierz pakiet</a>
+      </div>
+      <div class="pricing-card featured reveal">
+        <div class="plan-name">Social Pack</div>
+        <div class="plan-price">499<small> zł</small></div>
+        <div class="plan-desc">Komplet materiałów na mini-kampanię w social media.</div>
+        <ul class="plan-features">
+          <li>5 grafik/postów</li>
+          <li>3 stories</li>
+          <li>Teksty reklamowe</li>
+          <li>2 tury poprawek</li>
+        </ul>
+        <a href="#kontakt" class="plan-btn plan-btn-filled">Wybierz pakiet</a>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="plan-name">Video AI</div>
+        <div class="plan-price">799<small> zł</small></div>
+        <div class="plan-desc">Krótki spot wideo gotowy do publikacji na TikTok/Reels/Shorts.</div>
+        <ul class="plan-features">
+          <li>1 reklama wideo do 30 sek.</li>
+          <li>Scenariusz i tekst</li>
+          <li>Montaż i muzyka</li>
+          <li>Format pionowy 9:16</li>
+        </ul>
+        <a href="#kontakt" class="plan-btn plan-btn-outline">Wybierz pakiet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TATTOO BANNER -->
+<section>
+  <div class="section-inner">
+    <div class="tattoo-banner reveal">
+      <div class="tattoo-banner-text">
+        <h3>Interesują Cię tatuaże?</h3>
+        <p>Zobacz osobną stronę poświęconą studiu tatuażu, portfolio i zapisom na sesję.</p>
+      </div>
+      <a href="tattoo.html" class="tattoo-btn">Przejdź do Tattoo Studio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="o-mnie" class="about-bg">
+  <div class="section-inner about-inner">
+    <div class="about-visual reveal">
+      <div class="about-avatar">🤖</div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-tag">O mnie</div>
+      <h2>AI jako narzędzie,<br>kreatywność jako przewaga</h2>
+      <p>Pomagam małym firmom i lokalnym biznesom tworzyć materiały reklamowe, które wyglądają profesjonalnie bez budżetu dużej agencji.</p>
+      <p>Łączę narzędzia AI z klasycznym wyczuciem marketingu: dobry pomysł, mocny komunikat i estetyczna oprawa.</p>
+      <div class="tech-stack">
+        <span class="tech-pill">Generative AI</span>
+        <span class="tech-pill">Video Editing</span>
+        <span class="tech-pill">Copywriting</span>
+        <span class="tech-pill">Social Media</span>
+        <span class="tech-pill">Branding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag reveal">Opinie</div>
+    <h2 class="reveal">Co mówią klienci</h2>
+    <p class="section-sub reveal">Przykładowa sekcja opinii — można ją podmienić na prawdziwe recenzje.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"Szybka realizacja, świetny pomysł na reklamę i od razu gotowe materiały do wrzucenia na Facebooka."</div>
+        <div class="testimonial-author"><div class="author-avatar">🍕</div><div><div class="author-name">Restauracja lokalna</div><div class="author-role">Branża gastronomiczna</div></div></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"Grafiki wyglądały dużo lepiej niż nasze poprzednie posty. Klienci zaczęli częściej pisać w wiadomościach."</div>
+        <div class="testimonial-author"><div class="author-avatar">💈</div><div><div class="author-name">Salon usługowy</div><div class="author-role">Beauty / lokalnie</div></div></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"Dostałem gotowy pakiet reklam na start promocji. Bez kombinowania i tłumaczenia wszystkiego od zera."</div>
+        <div class="testimonial-author"><div class="author-avatar">🛒</div><div><div class="author-name">Sklep online</div><div class="author-role">E-commerce</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="process-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">FAQ</div>
+    <h2 class="reveal">Najczęstsze pytania</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Ile trwa realizacja projektu? <span class="faq-arrow">⌄</span></button>
+        <div class="faq-answer">Najprostsze grafiki mogą być gotowe nawet w 24–48 godzin. Większe pakiety i wideo zwykle wymagają kilku dni, zależnie od zakresu.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Czy dostanę prawa do materiałów? <span class="faq-arrow">⌄</span></button>
+        <div class="faq-answer">Tak. Po zakończeniu i opłaceniu projektu otrzymujesz gotowe materiały do wykorzystania w reklamach i social mediach.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Czy mogę zamówić coś spoza pakietów? <span class="faq-arrow">⌄</span></button>
+        <div class="faq-answer">Tak. Pakiety są orientacyjne — możemy przygotować indywidualną wycenę pod konkretną kampanię, produkt lub usługę.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Czy tworzysz reklamy dla każdej branży? <span class="faq-arrow">⌄</span></button>
+        <div class="faq-answer">Najlepiej sprawdzają się lokalne biznesy, gastronomia, beauty, usługi, e-commerce i małe marki osobiste. W razie potrzeby dopasuję styl do branży.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontakt" class="contact-bg">
+  <div class="section-inner contact-inner">
+    <div class="contact-info reveal">
+      <div class="section-tag">Kontakt</div>
+      <h2>Opowiedz mi<br>o swoim projekcie</h2>
+      <p>Napisz, czego potrzebujesz: grafiki, reklamy wideo, pakietu social media albo konsultacji. Odpowiem z propozycją i wyceną.</p>
+      <div class="contact-links">
+        <a href="mailto:kontakt@example.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <div><div class="contact-link-label">Email</div><div class="contact-link-text">kontakt@example.com</div></div>
+        </a>
+        <a href="tel:+48123456789" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <div><div class="contact-link-label">Telefon</div><div class="contact-link-text">+48 123 456 789</div></div>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-icon">📱</span>
+          <div><div class="contact-link-label">Instagram</div><div class="contact-link-text">@leszek.ai</div></div>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Imię / Firma</label>
+        <input type="text" class="form-control" placeholder="Np. Jan Kowalski / Studio X" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="twoj@email.pl" required>
+      </div>
+      <div class="form-group">
+        <label>Typ projektu</label>
+        <select class="form-control" required>
+          <option value="">Wybierz...</option>
+          <option>Grafika reklamowa</option>
+          <option>Reklama wideo</option>
+          <option>Social Media Pack</option>
+          <option>Wizualizacja produktu</option>
+          <option>Konsultacja AI</option>
+          <option>Inne</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Wiadomość</label>
+        <textarea class="form-control" placeholder="Napisz krótko, czego potrzebujesz..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Wyślij zapytanie</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">LP<span>.</span> AI Creative Studio</div>
+      <div class="footer-copy">© 2025 Leszek Papierz. Wszystkie prawa zastrzeżone.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#uslugi">Usługi</a>
+      <a href="#cennik">Cennik</a>
+      <a href="tattoo.html">Tatuaże</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Dziękuję! Formularz demonstracyjny — podłącz go do swojego maila lub systemu CRM.');
+  }
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
