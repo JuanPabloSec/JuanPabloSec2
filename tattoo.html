@@ -690,4 +690,273 @@
   <a href="#portfolio" onclick="toggleMobileNav()">Portfolio</a>
   <a href="#style" onclick="toggleMobileNav()">Style</a>
   <a href="#cennik" onclick="toggleMobileNav()">Cennik</a>
-  <a href="#pi
+  <a href="#pielegnacja" onclick="toggleMobileNav()">Pielęgnacja</a>
+  <a href="#kontakt" onclick="toggleMobileNav()">Kontakt</a>
+  <a href="index.html" onclick="toggleMobileNav()">← AI Studio</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-text">TATTOO</div>
+  <div class="hero-content">
+    <div class="hero-badge">Tattoo Studio</div>
+    <h1>Leszek<br>Papierz</h1>
+    <p class="hero-sub">Tatuaż artystyczny tworzony z precyzją i pasją. Każdy projekt jest unikalny — dopasowany do Ciebie i Twojej historii.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Umów konsultację</a>
+      <a href="#portfolio" class="btn-outline">Zobacz prace</a>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-tag reveal">Portfolio</div>
+    <h2 class="reveal">Wykonane tatuaże</h2>
+    <p class="section-sub reveal">Kolekcja realizacji w różnych stylach. Każda praca to indywidualny projekt stworzony razem z klientem.</p>
+
+    <div class="gallery-filter reveal">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">Wszystkie</button>
+      <button class="filter-btn" onclick="filterGallery('blackwork', this)">Blackwork</button>
+      <button class="filter-btn" onclick="filterGallery('fineline', this)">Fine Line</button>
+      <button class="filter-btn" onclick="filterGallery('realism', this)">Realizm</button>
+      <button class="filter-btn" onclick="filterGallery('japanese', this)">Japanese</button>
+      <button class="filter-btn" onclick="filterGallery('geometric', this)">Geometric</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-style="blackwork">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Sleeve Blackwork</div><div class="gallery-info-style">Blackwork · Rękaw</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="fineline">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Botaniczny Fine Line</div><div class="gallery-info-style">Fine Line · Przedramię</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="realism">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Portret — Realizm</div><div class="gallery-info-style">Realizm · Udo</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="japanese">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Koi Dragon</div><div class="gallery-info-style">Japanese · Plecy</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="geometric">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Sacred Geometry</div><div class="gallery-info-style">Geometric · Klatka</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="blackwork">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Ornamental</div><div class="gallery-info-style">Blackwork · Szyja</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="fineline">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Astronomia</div><div class="gallery-info-style">Fine Line · Nadgarstek</div></div></div>
+      </div>
+      <div class="gallery-item" data-style="realism">
+        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
+        <div class="gallery-overlay"><div><div class="gallery-info-title">Wildlife</div><div class="gallery-info-style">Realizm · Ramię</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLES -->
+<section id="style" class="styles-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">Style</div>
+    <h2 class="reveal">Specjalizacje</h2>
+    <p class="section-sub reveal">Pracuję w różnych technikach, zawsze dopasowując styl do anatomii i oczekiwań klienta.</p>
+    <div class="styles-grid">
+      <div class="style-card reveal"><span class="style-icon">⚫</span><div class="style-name">Blackwork</div><div class="style-desc">Mocne kontrasty, czarne wypełnienia, ornamenty i graficzne kompozycje.</div></div>
+      <div class="style-card reveal"><span class="style-icon">〰️</span><div class="style-name">Fine Line</div><div class="style-desc">Delikatne, precyzyjne linie idealne dla subtelnych, minimalistycznych projektów.</div></div>
+      <div class="style-card reveal"><span class="style-icon">👁</span><div class="style-name">Realizm</div><div class="style-desc">Portrety, zwierzęta i detale wykonywane z naciskiem na światło i głębię.</div></div>
+      <div class="style-card reveal"><span class="style-icon">◆</span><div class="style-name">Geometric</div><div class="style-desc">Symetria, mandale i geometryczne wzory dopasowane do ciała.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="cennik">
+  <div class="section-inner">
+    <div class="section-tag reveal">Cennik</div>
+    <h2 class="reveal">Orientacyjne ceny</h2>
+    <p class="section-sub reveal">Każdy tatuaż wyceniany jest indywidualnie po konsultacji i ustaleniu szczegółów projektu.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="plan-name">Mały tatuaż</div>
+        <div class="plan-from">od</div>
+        <div class="plan-price">300<small> zł</small></div>
+        <div class="plan-desc">Prosty, niewielki wzór do kilku centymetrów.</div>
+        <ul class="plan-features"><li>Konsultacja</li><li>Projekt podstawowy</li><li>Krótka sesja</li></ul>
+        <button class="plan-btn plan-btn-outline" onclick="scrollToContact('Mały tatuaż')">Zapytaj o termin</button>
+      </div>
+      <div class="pricing-card featured reveal">
+        <div class="plan-name">Średni projekt</div>
+        <div class="plan-from">od</div>
+        <div class="plan-price">700<small> zł</small></div>
+        <div class="plan-desc">Projekt na przedramię, ramię, łydkę lub podobny obszar.</div>
+        <ul class="plan-features"><li>Indywidualny projekt</li><li>1–2 poprawki</li><li>Sesja 2–4h</li></ul>
+        <button class="plan-btn plan-btn-filled" onclick="scrollToContact('Średni projekt')">Zapytaj o termin</button>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="plan-name">Duża sesja</div>
+        <div class="plan-from">od</div>
+        <div class="plan-price">1200<small> zł</small></div>
+        <div class="plan-desc">Większy projekt, rękaw, plecy lub rozbudowana kompozycja.</div>
+        <ul class="plan-features"><li>Koncepcja całości</li><li>Projekt premium</li><li>Sesja całodniowa</li></ul>
+        <button class="plan-btn plan-btn-outline" onclick="scrollToContact('Duża sesja')">Zapytaj o termin</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="styles-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">Proces</div>
+    <h2 class="reveal">Od pomysłu do tatuażu</h2>
+    <div class="process-steps">
+      <div class="process-step reveal"><div class="step-num">01</div><div class="step-title">Konsultacja</div><div class="step-desc">Omawiamy motyw, miejsce, rozmiar i styl.</div></div>
+      <div class="process-step reveal"><div class="step-num">02</div><div class="step-title">Projekt</div><div class="step-desc">Przygotowuję wzór dopasowany do Twoich oczekiwań.</div></div>
+      <div class="process-step reveal"><div class="step-num">03</div><div class="step-title">Sesja</div><div class="step-desc">Realizacja tatuażu w spokojnej, profesjonalnej atmosferze.</div></div>
+      <div class="process-step reveal"><div class="step-num">04</div><div class="step-title">Gojenie</div><div class="step-desc">Dostajesz pełne wskazówki pielęgnacji i możliwość kontaktu.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARE -->
+<section id="pielegnacja" class="care-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">Pielęgnacja</div>
+    <h2 class="reveal">Jak dbać o tatuaż</h2>
+    <p class="section-sub reveal">Prawidłowa pielęgnacja ma ogromne znaczenie dla finalnego wyglądu tatuażu.</p>
+    <div class="care-grid">
+      <div class="care-card reveal"><div class="care-day">PIERWSZE 24H</div><h3>Ochrona</h3><p>Nie zdejmuj folii zbyt wcześnie. Umyj tatuaż delikatnie letnią wodą i osusz papierowym ręcznikiem.</p></div>
+      <div class="care-card reveal"><div class="care-day">DNI 2–7</div><h3>Nawilżanie</h3><p>Stosuj cienką warstwę kremu. Nie drap, nie mocz długo i nie wystawiaj na słońce.</p></div>
+      <div class="care-card reveal"><div class="care-day">DNI 7–21</div><h3>Gojenie</h3><p>Skóra może się łuszczyć — to normalne. Unikaj basenu, sauny i intensywnego opalania.</p></div>
+      <div class="care-card reveal"><div class="care-day">PO WYGOJENIU</div><h3>Efekt końcowy</h3><p>Po pełnym wygojeniu ocenimy, czy potrzebna jest korekta lub dopracowanie detalu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="section-inner about-inner">
+    <div class="about-visual reveal"><div class="about-avatar">🖋</div></div>
+    <div class="about-text reveal">
+      <div class="section-tag">O mnie</div>
+      <h2>Precyzja, projekt<br>i charakter</h2>
+      <p>Tworzę tatuaże, które mają znaczenie — estetyczne, osobiste i dopasowane do ciała. Nie pracuję z gotowymi szablonami bez rozmowy o kontekście.</p>
+      <p>Najważniejszy jest dla mnie dobry projekt, czysta technika i komfort klienta podczas całego procesu.</p>
+      <p>Każdy wzór powstaje indywidualnie, z myślą o tym, żeby dobrze wyglądał nie tylko na zdjęciu, ale też po latach.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI BANNER -->
+<section>
+  <div class="section-inner">
+    <div class="ai-banner reveal">
+      <div class="ai-banner-text">
+        <h3>Potrzebujesz reklamy lub grafiki?</h3>
+        <p>Zobacz moją stronę AI Creative Studio — reklamy wideo i grafiki tworzone z użyciem AI.</p>
+      </div>
+      <a href="index.html" class="ai-btn">Przejdź do AI Studio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="styles-bg">
+  <div class="section-inner">
+    <div class="section-tag reveal">FAQ</div>
+    <h2 class="reveal">Najczęstsze pytania</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Czy muszę mieć gotowy projekt? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Nie. Wystarczy pomysł, inspiracja lub opis. Na tej podstawie przygotuję projekt dopasowany do Ciebie.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Czy tatuaż boli? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Odczucia zależą od miejsca, rozmiaru i indywidualnej wrażliwości. Podczas konsultacji omówimy wszystko spokojnie.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Czy można zrobić cover? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Tak, ale każdy cover wymaga osobnej oceny starego tatuażu, jego koloru, rozmiaru i możliwości zakrycia.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Ile trwa gojenie? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Zwykle pierwsze gojenie trwa około 2–3 tygodni, a pełna stabilizacja skóry może zająć dłużej.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontakt">
+  <div class="section-inner contact-inner">
+    <div class="contact-info reveal">
+      <div class="section-tag">Kontakt</div>
+      <h2>Umów konsultację</h2>
+      <p>Napisz, jaki tatuaż chodzi Ci po głowie. Podaj miejsce na ciele, orientacyjny rozmiar, styl i termin, który Ci odpowiada.</p>
+      <div class="contact-links">
+        <a href="mailto:tattoo@example.com" class="contact-link"><span class="contact-link-icon">✉️</span><div><div class="contact-link-label">Email</div><div class="contact-link-text">tattoo@example.com</div></div></a>
+        <a href="tel:+48123456789" class="contact-link"><span class="contact-link-icon">📞</span><div><div class="contact-link-label">Telefon</div><div class="contact-link-text">+48 123 456 789</div></div></a>
+        <a href="#" class="contact-link"><span class="contact-link-icon">📱</span><div><div class="contact-link-label">Instagram</div><div class="contact-link-text">@leszek.tattoo</div></div></a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-group"><label>Imię</label><input type="text" class="form-control" placeholder="Twoje imię" required></div>
+      <div class="form-group"><label>Email / Telefon</label><input type="text" class="form-control" placeholder="Kontakt do Ciebie" required></div>
+      <div class="form-group"><label>Typ projektu</label>
+        <select class="form-control" id="projectType" required>
+          <option value="">Wybierz...</option>
+          <option>Mały tatuaż</option>
+          <option>Średni projekt</option>
+          <option>Duża sesja</option>
+          <option>Cover</option>
+          <option>Konsultacja</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Miejsce i rozmiar</label><input type="text" class="form-control" placeholder="Np. przedramię, około 12 cm"></div>
+      <div class="form-group"><label>Opis pomysłu</label><textarea class="form-control" placeholder="Opisz motyw, styl, inspiracje..." required></textarea></div>
+      <div class="form-note">Formularz demonstracyjny — można go podłączyć do maila lub systemu zapisów.</div>
+      <button type="submit" class="form-submit">Wyślij zapytanie →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-logo">LP<span>.</span> Tattoo Studio</div><div class="footer-copy">© 2025 Leszek Papierz. Wszystkie prawa zastrzeżone.</div></div>
+    <div class="footer-links"><a href="#portfolio">Portfolio</a><a href="#cennik">Cennik</a><a href="index.html">AI Studio</a><a href="#kontakt">Kontakt</a></div>
+  </div>
+</footer>
+
+<script>
+  function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+
+  function filterGallery(style, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.style.display = (style === 'all' || item.dataset.style === style) ? 'block' : 'none';
+    });
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function scrollToContact(type) {
+    document.getElementById('projectType').value = type;
+    document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Dziękuję! Formularz demonstracyjny — podłącz go do swojego maila lub systemu zapisów.');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
