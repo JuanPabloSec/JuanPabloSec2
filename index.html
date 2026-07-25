@@ -842,12 +842,25 @@
     border-radius: 16px;
     padding: 2rem;
   }
-  .testimonial-stars { color: #ffd700; margin-bottom: 1rem; font-size: 0.9rem; }
+  .testimonial-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 100px;
+    background: rgba(0,229,255,0.07);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
   .testimonial-text {
     color: var(--muted);
     font-size: 0.925rem;
     line-height: 1.7;
-    font-style: italic;
     margin-bottom: 1.5rem;
   }
   .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
@@ -1335,25 +1348,25 @@
 <!-- TESTIMONIALS -->
 <section>
   <div class="section-inner">
-    <div class="section-tag reveal">Opinie</div>
-    <h2 class="reveal">Co mówią klienci</h2>
-    <p class="section-sub reveal">Przykładowa sekcja opinii — można ją podmienić na prawdziwe recenzje.</p>
+    <div class="section-tag reveal">Przykładowe zastosowania</div>
+    <h2 class="reveal">Tak może wyglądać współpraca</h2>
+    <p class="section-sub reveal">Poniższe scenariusze są demonstracyjne — pokazują, jakie materiały mogę przygotować dla różnych lokalnych firm.</p>
 
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <div class="testimonial-text">"Szybka realizacja, świetny pomysł na reklamę i od razu gotowe materiały do wrzucenia na Facebooka."</div>
-        <div class="testimonial-author"><div class="author-avatar">🍕</div><div><div class="author-name">Restauracja lokalna</div><div class="author-role">Branża gastronomiczna</div></div></div>
+        <div class="testimonial-label">Przykładowy scenariusz</div>
+        <div class="testimonial-text">Pionowy spot 9:16, apetyczne grafiki i gotowe teksty do publikacji — wszystko utrzymane w jednym, rozpoznawalnym stylu marki.</div>
+        <div class="testimonial-author"><div class="author-avatar">🍔</div><div><div class="author-name">Restauracja</div><div class="author-role">Wideo + social media</div></div></div>
       </div>
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <div class="testimonial-text">"Grafiki wyglądały dużo lepiej niż nasze poprzednie posty. Klienci zaczęli częściej pisać w wiadomościach."</div>
-        <div class="testimonial-author"><div class="author-avatar">💈</div><div><div class="author-name">Salon usługowy</div><div class="author-role">Beauty / lokalnie</div></div></div>
+        <div class="testimonial-label">Przykładowy scenariusz</div>
+        <div class="testimonial-text">Spójny zestaw postów i Stories prezentujących ofertę, cennik oraz wolne terminy — gotowy do regularnej publikacji na Instagramie i Facebooku.</div>
+        <div class="testimonial-author"><div class="author-avatar">✂️</div><div><div class="author-name">Salon usługowy</div><div class="author-role">Grafiki + kampania lokalna</div></div></div>
       </div>
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars">★★★★★</div>
-        <div class="testimonial-text">"Dostałem gotowy pakiet reklam na start promocji. Bez kombinowania i tłumaczenia wszystkiego od zera."</div>
-        <div class="testimonial-author"><div class="author-avatar">🛒</div><div><div class="author-name">Sklep online</div><div class="author-role">E-commerce</div></div></div>
+        <div class="testimonial-label">Przykładowy scenariusz</div>
+        <div class="testimonial-text">Profesjonalne wizualizacje produktów, banery promocyjne i krótkie reklamy pokazujące najważniejsze zalety oferty bez organizowania kosztownej sesji zdjęciowej.</div>
+        <div class="testimonial-author"><div class="author-avatar">🛍️</div><div><div class="author-name">Lokalny sklep</div><div class="author-role">Produkty + reklama</div></div></div>
       </div>
     </div>
   </div>
