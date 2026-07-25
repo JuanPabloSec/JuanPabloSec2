@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leszek Papierz — AI Creative Studio</title>
-<meta name="description" content="Reklamy wideo i grafiki reklamowe tworzone z użyciem AI. Szybko, skutecznie, dla małych biznesów i lokalnych przedsiębiorców.">
+<title>AI CONIC — reklama, grafika i wideo dla lokalnych firm</title>
+<meta name="description" content="AI CONIC tworzy reklamy wideo, grafiki i pakiety promocyjne dla lokalnych firm. Leszek Papierz — Frampol i okolice.">
+<meta name="theme-color" content="#080a0f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -97,6 +98,26 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
+
+  .nav-disabled {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .nav-disabled small {
+    color: #b9adff;
+    border: 1px solid rgba(123,97,255,0.35);
+    border-radius: 100px;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
 
   .nav-cta {
     background: var(--accent);
@@ -649,6 +670,14 @@
     flex-shrink: 0;
   }
   .tattoo-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(123,97,255,0.3); }
+  .tattoo-btn[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.78;
+  }
+  .tattoo-btn[aria-disabled="true"]:hover {
+    transform: none;
+    box-shadow: none;
+  }
 
   /* ABOUT */
   .about-bg { background: var(--bg2); }
@@ -926,13 +955,13 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">LP<span>.</span></a>
+  <a href="#" class="nav-logo" aria-label="AI CONIC — strona główna">AI <span>CONIC</span></a>
   <ul class="nav-links">
     <li><a href="#uslugi">Usługi</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#cennik">Cennik</a></li>
     <li><a href="#o-mnie">O mnie</a></li>
-    <li><a href="tattoo.html">Tatuaże</a></li>
+    <li><span class="nav-disabled" aria-disabled="true">InkVision <small>wkrótce</small></span></li>
     <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
@@ -947,7 +976,7 @@
   <a href="#portfolio" onclick="toggleMobileNav()">Portfolio</a>
   <a href="#cennik" onclick="toggleMobileNav()">Cennik</a>
   <a href="#o-mnie" onclick="toggleMobileNav()">O mnie</a>
-  <a href="tattoo.html" onclick="toggleMobileNav()">Tatuaże 🖋</a>
+  <span class="nav-disabled" aria-disabled="true">InkVision <small>wkrótce</small></span>
   <a href="#kontakt" onclick="toggleMobileNav()">Kontakt</a>
 </div>
 
@@ -1155,10 +1184,10 @@
   <div class="section-inner">
     <div class="tattoo-banner reveal">
       <div class="tattoo-banner-text">
-        <h3>Interesują Cię tatuaże?</h3>
-        <p>Zobacz osobną stronę poświęconą studiu tatuażu, portfolio i zapisom na sesję.</p>
+        <h3>InkVision — studio tatuażu</h3>
+        <p>Autorskie projekty, wizualizacje i portfolio pojawią się tutaj w kolejnym etapie.</p>
       </div>
-      <a href="tattoo.html" class="tattoo-btn">Przejdź do Tattoo Studio →</a>
+      <span class="tattoo-btn" aria-disabled="true">Coming soon</span>
     </div>
   </div>
 </section>
@@ -1177,9 +1206,9 @@
       <div class="tech-stack">
         <span class="tech-pill">Generative AI</span>
         <span class="tech-pill">Video Editing</span>
-        <span class="tech-pill">Copywriting</span>
         <span class="tech-pill">Social Media</span>
         <span class="tech-pill">Branding</span>
+        <span class="tech-pill">Frampol</span>
       </div>
     </div>
   </div>
@@ -1246,17 +1275,21 @@
       <h2>Opowiedz mi<br>o swoim projekcie</h2>
       <p>Napisz, czego potrzebujesz: grafiki, reklamy wideo, pakietu social media albo konsultacji. Odpowiem z propozycją i wyceną.</p>
       <div class="contact-links">
-        <a href="mailto:kontakt@example.com" class="contact-link">
+        <a href="mailto:leszek.papiez@gmail.com" class="contact-link">
           <span class="contact-link-icon">✉️</span>
-          <div><div class="contact-link-label">Email</div><div class="contact-link-text">kontakt@example.com</div></div>
+          <div><div class="contact-link-label">Email</div><div class="contact-link-text">leszek.papiez@gmail.com</div></div>
         </a>
-        <a href="tel:+48123456789" class="contact-link">
+        <a href="tel:+48501836089" class="contact-link">
           <span class="contact-link-icon">📞</span>
-          <div><div class="contact-link-label">Telefon</div><div class="contact-link-text">+48 123 456 789</div></div>
+          <div><div class="contact-link-label">Telefon</div><div class="contact-link-text">+48 501 836 089</div></div>
         </a>
-        <a href="#" class="contact-link">
+        <a href="https://www.instagram.com/_ai_conic/" class="contact-link" target="_blank" rel="noopener noreferrer">
           <span class="contact-link-icon">📱</span>
-          <div><div class="contact-link-label">Instagram</div><div class="contact-link-text">@leszek.ai</div></div>
+          <div><div class="contact-link-label">Instagram</div><div class="contact-link-text">@_ai_conic</div></div>
+        </a>
+        <a href="https://wa.me/48501836089" class="contact-link" target="_blank" rel="noopener noreferrer">
+          <span class="contact-link-icon">💬</span>
+          <div><div class="contact-link-label">WhatsApp</div><div class="contact-link-text">Napisz wiadomość</div></div>
         </a>
       </div>
     </div>
@@ -1264,15 +1297,15 @@
     <form class="contact-form reveal" onsubmit="handleSubmit(event)">
       <div class="form-group">
         <label>Imię / Firma</label>
-        <input type="text" class="form-control" placeholder="Np. Jan Kowalski / Studio X" required>
+        <input type="text" name="name" class="form-control" placeholder="Np. Jan Kowalski / Studio X" autocomplete="name" required>
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" class="form-control" placeholder="twoj@email.pl" required>
+        <input type="email" name="email" class="form-control" placeholder="twoj@email.pl" autocomplete="email" required>
       </div>
       <div class="form-group">
         <label>Typ projektu</label>
-        <select class="form-control" required>
+        <select name="project" class="form-control" required>
           <option value="">Wybierz...</option>
           <option>Grafika reklamowa</option>
           <option>Reklama wideo</option>
@@ -1284,7 +1317,7 @@
       </div>
       <div class="form-group">
         <label>Wiadomość</label>
-        <textarea class="form-control" placeholder="Napisz krótko, czego potrzebujesz..." required></textarea>
+        <textarea name="message" class="form-control" placeholder="Napisz krótko, czego potrzebujesz..." required></textarea>
       </div>
       <button type="submit" class="form-submit">Wyślij zapytanie</button>
     </form>
@@ -1294,13 +1327,13 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">LP<span>.</span> AI Creative Studio</div>
-      <div class="footer-copy">© 2025 Leszek Papierz. Wszystkie prawa zastrzeżone.</div>
+      <div class="footer-logo">AI <span>CONIC</span></div>
+      <div class="footer-copy">© 2026 Leszek Papierz · Frampol. Wszystkie prawa zastrzeżone.</div>
     </div>
     <div class="footer-links">
       <a href="#uslugi">Usługi</a>
       <a href="#cennik">Cennik</a>
-      <a href="tattoo.html">Tatuaże</a>
+      <span class="nav-disabled" aria-disabled="true">InkVision <small>wkrótce</small></span>
       <a href="#kontakt">Kontakt</a>
     </div>
   </div>
@@ -1320,7 +1353,15 @@
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert('Dziękuję! Formularz demonstracyjny — podłącz go do swojego maila lub systemu CRM.');
+    const data = new FormData(e.target);
+    const subject = encodeURIComponent(`Zapytanie o projekt — ${data.get('project')}`);
+    const body = encodeURIComponent(
+      `Dzień dobry,\n\n${data.get('message')}\n\n` +
+      `Imię / firma: ${data.get('name')}\n` +
+      `E-mail zwrotny: ${data.get('email')}\n` +
+      `Typ projektu: ${data.get('project')}`
+    );
+    window.location.href = `mailto:leszek.papiez@gmail.com?subject=${subject}&body=${body}`;
   }
 
   // Reveal on scroll
