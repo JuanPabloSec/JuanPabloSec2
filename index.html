@@ -486,6 +486,7 @@
   }
 
   .portfolio-item {
+    grid-column: span 4;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
@@ -505,9 +506,6 @@
   }
   .portfolio-item:nth-child(1) { grid-column: span 8; }
   .portfolio-item:nth-child(2) { grid-column: span 4; }
-  .portfolio-item:nth-child(3) { grid-column: span 4; }
-  .portfolio-item:nth-child(4) { grid-column: span 4; }
-  .portfolio-item:nth-child(5) { grid-column: span 4; }
 
   .portfolio-item > img {
     width: 100%;
@@ -1049,7 +1047,10 @@
     .portfolio-item:nth-child(2),
     .portfolio-item:nth-child(3),
     .portfolio-item:nth-child(4),
-    .portfolio-item:nth-child(5) { grid-column: span 6; }
+    .portfolio-item:nth-child(5),
+    .portfolio-item:nth-child(6),
+    .portfolio-item:nth-child(7),
+    .portfolio-item:nth-child(8) { grid-column: span 6; }
     .process-step:not(:last-child)::after { display: none; }
     .tattoo-banner { text-align: center; justify-content: center; }
     .tattoo-banner::before { display: none; }
@@ -1223,7 +1224,7 @@
   <div class="section-inner">
     <div class="section-tag reveal">Portfolio</div>
     <h2 class="reveal">Przykładowe realizacje</h2>
-    <p class="section-sub reveal">Autorskie koncepcje AI CONIC pokazujące, jak może wyglądać reklama Twojej firmy, produktu lub profilu w social media.</p>
+    <p class="section-sub reveal">Autorskie grafiki, wizualizacje i koncepcje wideo AI CONIC dla lokalnych firm, produktów, wydarzeń i profili social media.</p>
 
     <div class="portfolio-grid">
       <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo()" aria-label="Odtwórz reklamę wideo restauracji ŻAR Burger House">
@@ -1232,22 +1233,41 @@
         <span class="portfolio-play" aria-hidden="true">▶</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Spot dla restauracji</div><div class="overlay-type">Video · Social Media</div></div></div>
       </button>
-      <div class="portfolio-item reveal">
-        <img src="assets/portfolio/portfolio-promo-graphic.webp" alt="Grafika promocyjna dla lokalnego salonu barberskiego" loading="lazy" decoding="async">
-        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Promocja lokalnego salonu</div><div class="overlay-type">Grafika · Instagram</div></div></div>
-      </div>
-      <div class="portfolio-item reveal">
-        <img src="assets/portfolio/portfolio-product-visual.webp" alt="Wizualizacja kosmetyku na ciemnym postumencie" loading="lazy" decoding="async">
-        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Wizualizacja produktu</div><div class="overlay-type">E-commerce</div></div></div>
-      </div>
-      <div class="portfolio-item reveal">
-        <img src="assets/portfolio/portfolio-stories-pack.webp" alt="Zestaw spójnych kreacji do Instagram Stories" loading="lazy" decoding="async">
-        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Pakiet Stories</div><div class="overlay-type">Social Media</div></div></div>
-      </div>
-      <div class="portfolio-item reveal">
-        <img src="assets/portfolio/portfolio-copywriting-campaign.webp" alt="Koncepcja kampanii tekstowej i treści reklamowych" loading="lazy" decoding="async">
-        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Copywriting AI</div><div class="overlay-type">Teksty reklamowe</div></div></div>
-      </div>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-barber-campaign.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę kampanii NOVA Barber Studio">
+        <img src="assets/portfolio/generated/portfolio-barber-campaign.webp" alt="Grafika reklamowa NOVA Barber Studio z promocją pierwszego cięcia" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Grafika ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Kampania dla barbera</div><div class="overlay-type">Grafika · Lokalna promocja</div></div></div>
+      </a>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-beauty-campaign.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę kampanii LUMI Beauty Studio">
+        <img src="assets/portfolio/generated/portfolio-beauty-campaign.webp" alt="Jasna grafika reklamowa LUMI Beauty Studio" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Grafika ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Promocja salonu beauty</div><div class="overlay-type">Grafika · Instagram</div></div></div>
+      </a>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-perfume-product.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną wizualizację produktu NOIR 07">
+        <img src="assets/portfolio/generated/portfolio-perfume-product.webp" alt="Luksusowa wizualizacja czarnych perfum NOIR 07" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Produkt ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Wizualizacja produktu premium</div><div class="overlay-type">E-commerce · Reklama</div></div></div>
+      </a>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-fitness-stories.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę pakietu Stories PULSE">
+        <img src="assets/portfolio/generated/portfolio-fitness-stories.webp" alt="Pakiet trzech Stories dla studia fitness PULSE" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Social ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Pakiet Stories dla fitness</div><div class="overlay-type">Social Media · Branding</div></div></div>
+      </a>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-local-event.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę wydarzenia Nocne Granie">
+        <img src="assets/portfolio/generated/portfolio-local-event.webp" alt="Grafika promująca lokalne wydarzenie muzyczne Nocne Granie" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Event ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Promocja wydarzenia lokalnego</div><div class="overlay-type">Event · Social Media</div></div></div>
+      </a>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-video-detailing.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz koncepcję reklamy wideo studia auto detailingu">
+        <img src="assets/portfolio/generated/portfolio-video-detailing.webp" alt="Koncepcja wideo DETAIL LAB z czarnym samochodem i pianą" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Pomysł wideo ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Detailing: od piany do lustra</div><div class="overlay-type">Koncepcja wideo · 12 s</div></div></div>
+      </a>
+      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-video-coffee.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz koncepcję reklamy wideo lokalnej kawiarni">
+        <img src="assets/portfolio/generated/portfolio-video-coffee.webp" alt="Koncepcja reklamy kawiarni z espresso nalewanym do czarnej filiżanki" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Pomysł wideo ↗</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Kawiarnia: pierwszy łyk</div><div class="overlay-type">Koncepcja wideo · 10 s</div></div></div>
+      </a>
     </div>
   </div>
 </section>
