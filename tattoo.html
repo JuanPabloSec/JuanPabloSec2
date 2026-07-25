@@ -1,962 +1,149 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leszek Papierz — Tattoo Studio</title>
-<meta name="description" content="Tatuaż artystyczny — niestandardowe projekty, unikalne wzory. Leszek Papierz Tattoo Studio.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #070707;
-    --bg2: #0c0c0c;
-    --bg3: #111111;
-    --accent: #c8a96e;
-    --accent2: #e8d5a3;
-    --accent3: #ff4d6d;
-    --text: #e8e4dc;
-    --muted: #6b6b6b;
-    --border: rgba(255,255,255,0.07);
-    --card: rgba(255,255,255,0.03);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.5;
-  }
-
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(140px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .orb-1 { width: 500px; height: 500px; background: rgba(200,169,110,0.06); top: -100px; right: -150px; }
-  .orb-2 { width: 400px; height: 400px; background: rgba(200,169,110,0.04); bottom: 100px; left: -100px; }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(7,7,7,0.9);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-  .nav-logo span { color: var(--accent); }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  .nav-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: var(--muted) !important;
-    font-size: 0.85rem !important;
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 0.45rem 0.9rem;
-    border-radius: 6px;
-    transition: all 0.2s !important;
-  }
-  .nav-back:hover { color: var(--text) !important; border-color: rgba(200,169,110,0.25) !important; }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    border-radius: 2px;
-  }
-
-  .mobile-nav {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(7,7,7,0.98);
-    z-index: 99;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-  .mobile-nav.open { display: flex; }
-  .mobile-nav a {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .mobile-nav a:hover { color: var(--accent); }
-  .mobile-nav-close {
-    position: absolute;
-    top: 1.5rem; right: 2rem;
-    background: none; border: none;
-    color: var(--muted);
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .hero-bg-text {
-    position: absolute;
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(6rem, 18vw, 18rem);
-    font-weight: 800;
-    color: rgba(200,169,110,0.03);
-    letter-spacing: -0.05em;
-    user-select: none;
-    pointer-events: none;
-    white-space: nowrap;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .hero-content { position: relative; z-index: 1; max-width: 720px; }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(200,169,110,0.08);
-    border: 1px solid rgba(200,169,110,0.2);
-    color: var(--accent);
-    padding: 0.35rem 0.85rem;
-    border-radius: 100px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  .hero-sub {
-    color: var(--muted);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #070707;
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,169,110,0.25); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
-    font-weight: 400;
-    font-size: 0.95rem;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-  }
-  .btn-outline:hover { border-color: rgba(200,169,110,0.25); }
-
-  /* SECTIONS */
-  section { position: relative; z-index: 1; }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 2rem;
-  }
-
-  .section-tag {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2rem, 4vw, 3rem);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-
-  .section-sub {
-    color: var(--muted);
-    font-size: 1.05rem;
-    max-width: 520px;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-  }
-
-  /* PORTFOLIO / GALLERY */
-  .gallery-filter {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-  }
-
-  .filter-btn {
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 0.45rem 1.1rem;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.2s;
-  }
-  .filter-btn:hover, .filter-btn.active {
-    background: rgba(200,169,110,0.1);
-    border-color: rgba(200,169,110,0.3);
-    color: var(--accent);
-  }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-  }
-
-  .gallery-item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .gallery-item:hover { transform: scale(1.02); border-color: rgba(200,169,110,0.2); }
-
-  .gallery-item:nth-child(3n+1) { aspect-ratio: 3/4; }
-  .gallery-item:nth-child(3n+2) { aspect-ratio: 1; }
-  .gallery-item:nth-child(3n+3) { aspect-ratio: 4/5; }
-
-  .gallery-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    color: var(--muted);
-    min-height: 240px;
-  }
-  .gallery-placeholder .icon { font-size: 2.5rem; opacity: 0.2; }
-  .gallery-placeholder .label { font-size: 0.8rem; opacity: 0.5; }
-
-  .gallery-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(7,7,7,0.9) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: flex;
-    align-items: flex-end;
-    padding: 1.2rem;
-  }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-
-  .gallery-info-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-  }
-  .gallery-info-style {
-    color: var(--accent);
-    font-size: 0.78rem;
-  }
-
-  /* STYLES SECTION */
-  .styles-bg { background: var(--bg2); }
-
-  .styles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .style-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.3s;
-  }
-  .style-card:hover {
-    border-color: rgba(200,169,110,0.2);
-    transform: translateY(-3px);
-  }
-  .style-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
-  .style-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-  }
-  .style-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
-
-  /* PRICING */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .pricing-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    transition: all 0.3s;
-    position: relative;
-  }
-  .pricing-card:hover { transform: translateY(-4px); border-color: rgba(200,169,110,0.2); }
-  .pricing-card.featured { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.04); }
-  .pricing-card.featured::before {
-    content: 'Najczęściej wybierane';
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent);
-    color: #070707;
-    padding: 0.2rem 1rem;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .plan-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  .plan-price {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 2.5rem;
-    color: var(--accent);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin: 1rem 0;
-  }
-  .plan-price small { font-size: 1rem; color: var(--muted); font-weight: 300; }
-  .plan-from { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
-  .plan-desc { color: var(--muted); font-size: 0.875rem; margin-bottom: 1.5rem; line-height: 1.6; }
-  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
-  .plan-features li {
-    display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem;
-  }
-  .plan-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
-
-  .plan-btn {
-    display: block;
-    text-align: center;
-    padding: 0.85rem;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .plan-btn-outline { border: 1px solid var(--border); color: var(--text); background: none; font-family: 'DM Sans', sans-serif; width: 100%; }
-  .plan-btn-outline:hover { border-color: rgba(200,169,110,0.3); color: var(--accent); }
-  .plan-btn-filled { background: var(--accent); color: #070707; border: none; font-family: 'DM Sans', sans-serif; width: 100%; }
-  .plan-btn-filled:hover { opacity: 0.85; }
-
-  /* PROCESS */
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-  }
-  .process-step { position: relative; }
-  .step-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 3rem;
-    font-weight: 800;
-    color: rgba(200,169,110,0.1);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .step-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent2);
-  }
-  .step-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
-
-  /* CARE */
-  .care-bg { background: var(--bg2); }
-  .care-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
-  .care-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.75rem;
-  }
-  .care-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
-    color: var(--accent);
-  }
-  .care-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
-  .care-day { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
-
-  /* ABOUT */
-  .about-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .about-visual {
-    aspect-ratio: 3/4;
-    border-radius: 20px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .about-visual::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 40%;
-    background: linear-gradient(to top, var(--bg3), transparent);
-  }
-  .about-avatar { font-size: 5rem; }
-  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
-
-  /* FAQ */
-  .faq-list { max-width: 680px; }
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-question {
-    width: 100%; background: none; border: none;
-    color: var(--text); font-family: 'DM Sans', sans-serif;
-    font-size: 1rem; font-weight: 400; padding: 1.5rem 0;
-    text-align: left; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-    transition: color 0.2s;
-  }
-  .faq-question:hover { color: var(--accent); }
-  .faq-arrow { transition: transform 0.3s; font-style: normal; flex-shrink: 0; }
-  .faq-item.open .faq-arrow { transform: rotate(180deg); }
-  .faq-answer {
-    display: none; color: var(--muted); font-size: 0.9rem;
-    line-height: 1.8; padding-bottom: 1.5rem;
-  }
-  .faq-item.open .faq-answer { display: block; }
-
-  /* CONTACT */
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-  }
-  .contact-info p { color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 1rem 1.2rem;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; text-decoration: none; color: var(--text); transition: all 0.2s;
-  }
-  .contact-link:hover { border-color: rgba(200,169,110,0.25); color: var(--accent); }
-  .contact-link-icon { font-size: 1.3rem; }
-  .contact-link-text { font-size: 0.9rem; }
-  .contact-link-label { color: var(--muted); font-size: 0.78rem; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
-  .form-control {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 0.85rem 1rem; color: var(--text);
-    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
-    outline: none; transition: border-color 0.2s; width: 100%; resize: vertical;
-  }
-  .form-control:focus { border-color: rgba(200,169,110,0.35); }
-  .form-control::placeholder { color: var(--muted); }
-  textarea.form-control { min-height: 120px; }
-  .form-note { font-size: 0.8rem; color: var(--muted); margin-top: -0.25rem; }
-  .form-submit {
-    background: var(--accent); color: #070707; border: none; border-radius: 10px;
-    padding: 0.9rem; font-family: 'DM Sans', sans-serif; font-weight: 500;
-    font-size: 0.95rem; cursor: pointer; transition: all 0.2s;
-  }
-  .form-submit:hover { opacity: 0.85; transform: translateY(-1px); }
-
-  /* AI BANNER */
-  .ai-banner {
-    background: linear-gradient(135deg, rgba(0,229,255,0.07) 0%, rgba(123,97,255,0.06) 100%);
-    border: 1px solid rgba(0,229,255,0.15);
-    border-radius: 20px;
-    padding: 4rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .ai-banner-text h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem;
-  }
-  .ai-banner-text p { color: var(--muted); max-width: 380px; }
-  .ai-btn {
-    background: linear-gradient(135deg, #00e5ff, #7b61ff);
-    color: #fff; padding: 0.9rem 2.2rem; border-radius: 8px;
-    font-weight: 500; text-decoration: none; white-space: nowrap;
-    transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
-  }
-  .ai-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,229,255,0.25); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 3rem 2rem;
-  }
-  .footer-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
-  }
-  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
-  .footer-logo span { color: var(--accent); }
-  .footer-copy { color: var(--muted); font-size: 0.85rem; }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { color: var(--muted); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--text); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 900px) {
-    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .about-visual { display: none; }
-    .ai-banner { text-align: center; justify-content: center; }
-  }
-  @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .hero { padding: 7rem 1.5rem 3rem; }
-    .section-inner { padding: 4rem 1.5rem; }
-    h1 { font-size: 3.5rem; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070707">
+  <title>InkVision — Coming soon</title>
+  <meta name="description" content="InkVision — przyszłe studio tatuażu i autorskich projektów. Strona w przygotowaniu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070707;
+      --surface: #101010;
+      --gold: #c8a96e;
+      --text: #eee9df;
+      --muted: #8a867e;
+      --border: rgba(255,255,255,.09);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(200,169,110,.13), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(255,77,109,.06), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+    }
+    body::before {
+      content: "INK";
+      position: fixed;
+      right: -2vw;
+      bottom: -10vw;
+      color: rgba(255,255,255,.018);
+      font: 800 clamp(12rem, 35vw, 34rem)/.8 "Syne", sans-serif;
+      letter-spacing: -.1em;
+      pointer-events: none;
+    }
+    main {
+      position: relative;
+      width: min(100%, 880px);
+      padding: clamp(2rem, 7vw, 5rem);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(17,17,17,.94), rgba(8,8,8,.9));
+      box-shadow: 0 35px 100px rgba(0,0,0,.55);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 4rem;
+      font: 800 1.05rem "Syne", sans-serif;
+      letter-spacing: .08em;
+    }
+    .brand::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 22px rgba(200,169,110,.8);
+    }
+    .label {
+      margin: 0 0 1rem;
+      color: var(--gold);
+      font-size: .76rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 0 0 1.4rem;
+      font: 800 clamp(3rem, 10vw, 6.8rem)/.88 "Syne", sans-serif;
+      letter-spacing: -.07em;
+    }
+    h1 span { color: var(--gold); }
+    p {
+      max-width: 590px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.75;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: 2.3rem;
+    }
+    a {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      padding: .8rem 1.35rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform .2s, border-color .2s;
+    }
+    a:hover { transform: translateY(-2px); border-color: rgba(200,169,110,.5); }
+    a.primary { border-color: var(--gold); background: var(--gold); color: #15110b; }
+    .status {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      padding: .35rem .7rem;
+      border: 1px solid rgba(200,169,110,.28);
+      border-radius: 99px;
+      color: var(--gold);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 650px) {
+      body { padding: 1rem; }
+      main { padding: 2rem 1.4rem; border-radius: 20px; }
+      .brand { margin-bottom: 5rem; }
+      .status { top: 4.6rem; left: 1.4rem; right: auto; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-
-<nav>
-  <a href="index.html" class="nav-logo">LP<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#style">Style</a></li>
-    <li><a href="#cennik">Cennik</a></li>
-    <li><a href="#pielegnacja">Pielęgnacja</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="index.html" class="nav-back">← AI Studio</a></li>
-  </ul>
-  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
-  <a href="#portfolio" onclick="toggleMobileNav()">Portfolio</a>
-  <a href="#style" onclick="toggleMobileNav()">Style</a>
-  <a href="#cennik" onclick="toggleMobileNav()">Cennik</a>
-  <a href="#pielegnacja" onclick="toggleMobileNav()">Pielęgnacja</a>
-  <a href="#kontakt" onclick="toggleMobileNav()">Kontakt</a>
-  <a href="index.html" onclick="toggleMobileNav()">← AI Studio</a>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg-text">TATTOO</div>
-  <div class="hero-content">
-    <div class="hero-badge">Tattoo Studio</div>
-    <h1>Leszek<br>Papierz</h1>
-    <p class="hero-sub">Tatuaż artystyczny tworzony z precyzją i pasją. Każdy projekt jest unikalny — dopasowany do Ciebie i Twojej historii.</p>
-    <div class="hero-actions">
-      <a href="#kontakt" class="btn-primary">Umów konsultację</a>
-      <a href="#portfolio" class="btn-outline">Zobacz prace</a>
+  <main>
+    <div class="brand">INKVISION</div>
+    <span class="status">Coming soon</span>
+    <p class="label">Studio tatuażu w przygotowaniu</p>
+    <h1>Nowy rozdział<br><span>już wkrótce.</span></h1>
+    <p>Pracuję nad miejscem poświęconym autorskim projektom, wizualizacjom i przyszłemu studiu tatuażu. Na razie zapraszam na stronę AI CONIC.</p>
+    <div class="actions">
+      <a class="primary" href="index.html">← Wróć do AI CONIC</a>
+      <a href="mailto:leszek.papiez@gmail.com">Napisz e-mail</a>
     </div>
-  </div>
-</div>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-inner">
-    <div class="section-tag reveal">Portfolio</div>
-    <h2 class="reveal">Wykonane tatuaże</h2>
-    <p class="section-sub reveal">Kolekcja realizacji w różnych stylach. Każda praca to indywidualny projekt stworzony razem z klientem.</p>
-
-    <div class="gallery-filter reveal">
-      <button class="filter-btn active" onclick="filterGallery('all', this)">Wszystkie</button>
-      <button class="filter-btn" onclick="filterGallery('blackwork', this)">Blackwork</button>
-      <button class="filter-btn" onclick="filterGallery('fineline', this)">Fine Line</button>
-      <button class="filter-btn" onclick="filterGallery('realism', this)">Realizm</button>
-      <button class="filter-btn" onclick="filterGallery('japanese', this)">Japanese</button>
-      <button class="filter-btn" onclick="filterGallery('geometric', this)">Geometric</button>
-    </div>
-
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-style="blackwork">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Sleeve Blackwork</div><div class="gallery-info-style">Blackwork · Rękaw</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="fineline">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Botaniczny Fine Line</div><div class="gallery-info-style">Fine Line · Przedramię</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="realism">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Portret — Realizm</div><div class="gallery-info-style">Realizm · Udo</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="japanese">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Koi Dragon</div><div class="gallery-info-style">Japanese · Plecy</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="geometric">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Sacred Geometry</div><div class="gallery-info-style">Geometric · Klatka</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="blackwork">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Ornamental</div><div class="gallery-info-style">Blackwork · Szyja</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="fineline">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Astronomia</div><div class="gallery-info-style">Fine Line · Nadgarstek</div></div></div>
-      </div>
-      <div class="gallery-item" data-style="realism">
-        <div class="gallery-placeholder"><span class="icon">🖋</span><span class="label">Zdjęcie tatuażu</span></div>
-        <div class="gallery-overlay"><div><div class="gallery-info-title">Wildlife</div><div class="gallery-info-style">Realizm · Ramię</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STYLES -->
-<section id="style" class="styles-bg">
-  <div class="section-inner">
-    <div class="section-tag reveal">Style</div>
-    <h2 class="reveal">Specjalizacje</h2>
-    <p class="section-sub reveal">Pracuję w różnych technikach, zawsze dopasowując styl do anatomii i oczekiwań klienta.</p>
-    <div class="styles-grid">
-      <div class="style-card reveal"><span class="style-icon">⚫</span><div class="style-name">Blackwork</div><div class="style-desc">Mocne kontrasty, czarne wypełnienia, ornamenty i graficzne kompozycje.</div></div>
-      <div class="style-card reveal"><span class="style-icon">〰️</span><div class="style-name">Fine Line</div><div class="style-desc">Delikatne, precyzyjne linie idealne dla subtelnych, minimalistycznych projektów.</div></div>
-      <div class="style-card reveal"><span class="style-icon">👁</span><div class="style-name">Realizm</div><div class="style-desc">Portrety, zwierzęta i detale wykonywane z naciskiem na światło i głębię.</div></div>
-      <div class="style-card reveal"><span class="style-icon">◆</span><div class="style-name">Geometric</div><div class="style-desc">Symetria, mandale i geometryczne wzory dopasowane do ciała.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="cennik">
-  <div class="section-inner">
-    <div class="section-tag reveal">Cennik</div>
-    <h2 class="reveal">Orientacyjne ceny</h2>
-    <p class="section-sub reveal">Każdy tatuaż wyceniany jest indywidualnie po konsultacji i ustaleniu szczegółów projektu.</p>
-
-    <div class="pricing-grid">
-      <div class="pricing-card reveal">
-        <div class="plan-name">Mały tatuaż</div>
-        <div class="plan-from">od</div>
-        <div class="plan-price">300<small> zł</small></div>
-        <div class="plan-desc">Prosty, niewielki wzór do kilku centymetrów.</div>
-        <ul class="plan-features"><li>Konsultacja</li><li>Projekt podstawowy</li><li>Krótka sesja</li></ul>
-        <button class="plan-btn plan-btn-outline" onclick="scrollToContact('Mały tatuaż')">Zapytaj o termin</button>
-      </div>
-      <div class="pricing-card featured reveal">
-        <div class="plan-name">Średni projekt</div>
-        <div class="plan-from">od</div>
-        <div class="plan-price">700<small> zł</small></div>
-        <div class="plan-desc">Projekt na przedramię, ramię, łydkę lub podobny obszar.</div>
-        <ul class="plan-features"><li>Indywidualny projekt</li><li>1–2 poprawki</li><li>Sesja 2–4h</li></ul>
-        <button class="plan-btn plan-btn-filled" onclick="scrollToContact('Średni projekt')">Zapytaj o termin</button>
-      </div>
-      <div class="pricing-card reveal">
-        <div class="plan-name">Duża sesja</div>
-        <div class="plan-from">od</div>
-        <div class="plan-price">1200<small> zł</small></div>
-        <div class="plan-desc">Większy projekt, rękaw, plecy lub rozbudowana kompozycja.</div>
-        <ul class="plan-features"><li>Koncepcja całości</li><li>Projekt premium</li><li>Sesja całodniowa</li></ul>
-        <button class="plan-btn plan-btn-outline" onclick="scrollToContact('Duża sesja')">Zapytaj o termin</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="styles-bg">
-  <div class="section-inner">
-    <div class="section-tag reveal">Proces</div>
-    <h2 class="reveal">Od pomysłu do tatuażu</h2>
-    <div class="process-steps">
-      <div class="process-step reveal"><div class="step-num">01</div><div class="step-title">Konsultacja</div><div class="step-desc">Omawiamy motyw, miejsce, rozmiar i styl.</div></div>
-      <div class="process-step reveal"><div class="step-num">02</div><div class="step-title">Projekt</div><div class="step-desc">Przygotowuję wzór dopasowany do Twoich oczekiwań.</div></div>
-      <div class="process-step reveal"><div class="step-num">03</div><div class="step-title">Sesja</div><div class="step-desc">Realizacja tatuażu w spokojnej, profesjonalnej atmosferze.</div></div>
-      <div class="process-step reveal"><div class="step-num">04</div><div class="step-title">Gojenie</div><div class="step-desc">Dostajesz pełne wskazówki pielęgnacji i możliwość kontaktu.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CARE -->
-<section id="pielegnacja" class="care-bg">
-  <div class="section-inner">
-    <div class="section-tag reveal">Pielęgnacja</div>
-    <h2 class="reveal">Jak dbać o tatuaż</h2>
-    <p class="section-sub reveal">Prawidłowa pielęgnacja ma ogromne znaczenie dla finalnego wyglądu tatuażu.</p>
-    <div class="care-grid">
-      <div class="care-card reveal"><div class="care-day">PIERWSZE 24H</div><h3>Ochrona</h3><p>Nie zdejmuj folii zbyt wcześnie. Umyj tatuaż delikatnie letnią wodą i osusz papierowym ręcznikiem.</p></div>
-      <div class="care-card reveal"><div class="care-day">DNI 2–7</div><h3>Nawilżanie</h3><p>Stosuj cienką warstwę kremu. Nie drap, nie mocz długo i nie wystawiaj na słońce.</p></div>
-      <div class="care-card reveal"><div class="care-day">DNI 7–21</div><h3>Gojenie</h3><p>Skóra może się łuszczyć — to normalne. Unikaj basenu, sauny i intensywnego opalania.</p></div>
-      <div class="care-card reveal"><div class="care-day">PO WYGOJENIU</div><h3>Efekt końcowy</h3><p>Po pełnym wygojeniu ocenimy, czy potrzebna jest korekta lub dopracowanie detalu.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section>
-  <div class="section-inner about-inner">
-    <div class="about-visual reveal"><div class="about-avatar">🖋</div></div>
-    <div class="about-text reveal">
-      <div class="section-tag">O mnie</div>
-      <h2>Precyzja, projekt<br>i charakter</h2>
-      <p>Tworzę tatuaże, które mają znaczenie — estetyczne, osobiste i dopasowane do ciała. Nie pracuję z gotowymi szablonami bez rozmowy o kontekście.</p>
-      <p>Najważniejszy jest dla mnie dobry projekt, czysta technika i komfort klienta podczas całego procesu.</p>
-      <p>Każdy wzór powstaje indywidualnie, z myślą o tym, żeby dobrze wyglądał nie tylko na zdjęciu, ale też po latach.</p>
-    </div>
-  </div>
-</section>
-
-<!-- AI BANNER -->
-<section>
-  <div class="section-inner">
-    <div class="ai-banner reveal">
-      <div class="ai-banner-text">
-        <h3>Potrzebujesz reklamy lub grafiki?</h3>
-        <p>Zobacz moją stronę AI Creative Studio — reklamy wideo i grafiki tworzone z użyciem AI.</p>
-      </div>
-      <a href="index.html" class="ai-btn">Przejdź do AI Studio →</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="styles-bg">
-  <div class="section-inner">
-    <div class="section-tag reveal">FAQ</div>
-    <h2 class="reveal">Najczęstsze pytania</h2>
-    <div class="faq-list reveal">
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Czy muszę mieć gotowy projekt? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Nie. Wystarczy pomysł, inspiracja lub opis. Na tej podstawie przygotuję projekt dopasowany do Ciebie.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Czy tatuaż boli? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Odczucia zależą od miejsca, rozmiaru i indywidualnej wrażliwości. Podczas konsultacji omówimy wszystko spokojnie.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Czy można zrobić cover? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Tak, ale każdy cover wymaga osobnej oceny starego tatuażu, jego koloru, rozmiaru i możliwości zakrycia.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Ile trwa gojenie? <span class="faq-arrow">⌄</span></button><div class="faq-answer">Zwykle pierwsze gojenie trwa około 2–3 tygodni, a pełna stabilizacja skóry może zająć dłużej.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="kontakt">
-  <div class="section-inner contact-inner">
-    <div class="contact-info reveal">
-      <div class="section-tag">Kontakt</div>
-      <h2>Umów konsultację</h2>
-      <p>Napisz, jaki tatuaż chodzi Ci po głowie. Podaj miejsce na ciele, orientacyjny rozmiar, styl i termin, który Ci odpowiada.</p>
-      <div class="contact-links">
-        <a href="mailto:tattoo@example.com" class="contact-link"><span class="contact-link-icon">✉️</span><div><div class="contact-link-label">Email</div><div class="contact-link-text">tattoo@example.com</div></div></a>
-        <a href="tel:+48123456789" class="contact-link"><span class="contact-link-icon">📞</span><div><div class="contact-link-label">Telefon</div><div class="contact-link-text">+48 123 456 789</div></div></a>
-        <a href="#" class="contact-link"><span class="contact-link-icon">📱</span><div><div class="contact-link-label">Instagram</div><div class="contact-link-text">@leszek.tattoo</div></div></a>
-      </div>
-    </div>
-
-    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-      <div class="form-group"><label>Imię</label><input type="text" class="form-control" placeholder="Twoje imię" required></div>
-      <div class="form-group"><label>Email / Telefon</label><input type="text" class="form-control" placeholder="Kontakt do Ciebie" required></div>
-      <div class="form-group"><label>Typ projektu</label>
-        <select class="form-control" id="projectType" required>
-          <option value="">Wybierz...</option>
-          <option>Mały tatuaż</option>
-          <option>Średni projekt</option>
-          <option>Duża sesja</option>
-          <option>Cover</option>
-          <option>Konsultacja</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Miejsce i rozmiar</label><input type="text" class="form-control" placeholder="Np. przedramię, około 12 cm"></div>
-      <div class="form-group"><label>Opis pomysłu</label><textarea class="form-control" placeholder="Opisz motyw, styl, inspiracje..." required></textarea></div>
-      <div class="form-note">Formularz demonstracyjny — można go podłączyć do maila lub systemu zapisów.</div>
-      <button type="submit" class="form-submit">Wyślij zapytanie →</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div><div class="footer-logo">LP<span>.</span> Tattoo Studio</div><div class="footer-copy">© 2025 Leszek Papierz. Wszystkie prawa zastrzeżone.</div></div>
-    <div class="footer-links"><a href="#portfolio">Portfolio</a><a href="#cennik">Cennik</a><a href="index.html">AI Studio</a><a href="#kontakt">Kontakt</a></div>
-  </div>
-</footer>
-
-<script>
-  function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }
-
-  function filterGallery(style, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.style.display = (style === 'all' || item.dataset.style === style) ? 'block' : 'none';
-    });
-  }
-
-  function toggleFaq(btn) {
-    const item = btn.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  }
-
-  function scrollToContact(type) {
-    document.getElementById('projectType').value = type;
-    document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert('Dziękuję! Formularz demonstracyjny — podłącz go do swojego maila lub systemu zapisów.');
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+  </main>
 </body>
 </html>
