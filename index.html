@@ -1183,11 +1183,17 @@
     .section-inner { padding: 4rem 1.5rem; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item { grid-column: span 1 !important; }
-    .websites-preview-head { display: block; }
+    .websites-preview-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 1.75rem;
+    }
     .websites-preview-link {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      margin-top: 1.5rem;
+      justify-self: start;
+      margin-top: 0;
       width: fit-content;
     }
     .websites-preview-grid { grid-template-columns: 1fr; }
