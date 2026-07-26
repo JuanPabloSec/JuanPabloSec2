@@ -28,6 +28,13 @@
     <section class="player-card">
       <div class="screen" id="screen">
         <video id="video" controls playsinline preload="metadata"></video>
+        <div class="loader" id="loader" hidden>
+          <div>
+            <strong>Ładowanie pełnej wersji HD…</strong>
+            <div class="progress"><div class="bar" id="progressBar"></div></div>
+            <span class="status" id="loadStatus">Przygotowywanie filmu</span>
+          </div>
+        </div>
       </div>
       <div class="actions">
         <a class="button" id="openButton" href="#" target="_blank" rel="noopener">Otwórz plik HD ↗</a>
@@ -55,9 +62,9 @@
       coffee: {
         title: 'KAWA 7:00',
         description: 'Pełna pionowa reklama kawiarni w natywnej rozdzielczości.',
-        src: 'assets/video/hd/kawa-7-00-HD.mp4',
-        filename: 'kawa-7-00-HD.mp4',
-        size: 9788847, sizeLabel: '9,8 MB', resolution: '1080 × 1896 · 30 fps',
+        chunks: Array.from({length: 13}, (_, index) => `assets/video/hd/coffee-v3/part-${String(index).padStart(2, '0')}.bin`),
+        filename: 'kawa-7-00-HD-v2.mp4',
+        size: 7599545, sizeLabel: '7,6 MB', resolution: '1080 × 1896 · 30 fps',
         ratio: 'portrait', poster: 'assets/portfolio/generated/portfolio-video-coffee.webp'
       },
       detailing: {
@@ -79,19 +86,63 @@
     const video = document.getElementById('video');
     const openButton = document.getElementById('openButton');
     const downloadButton = document.getElementById('downloadButton');
+    const loader = document.getElementById('loader');
+    const progressBar = document.getElementById('progressBar');
+    const loadStatus = document.getElementById('loadStatus');
 
     document.title = `${film.title} — pełna wersja HD | AI CONIC`;
     title.textContent = film.title;
     description.textContent = film.description;
     screen.classList.add(film.ratio);
-    video.src = film.src;
     video.poster = film.poster;
     video.setAttribute('aria-label', `Pełna reklama ${film.title}`);
-    openButton.href = film.src;
-    downloadButton.href = film.src;
-    downloadButton.download = film.filename;
     document.getElementById('meta').textContent = `${film.resolution} · ${film.sizeLabel}`;
     document.querySelector(`[data-film="${filmKey}"]`).classList.add('current');
+
+    function setVideoSource(source) {
+      video.src = source;
+      openButton.href = source;
+      downloadButton.href = source;
+      downloadButton.download = film.filename;
+      openButton.classList.remove('disabled');
+      downloadButton.classList.remove('disabled');
+    }
+
+    async function loadFilm() {
+      if (!film.chunks) {
+        setVideoSource(film.src);
+        return;
+      }
+
+      loader.hidden = false;
+      video.hidden = true;
+      openButton.classList.add('disabled');
+      downloadButton.classList.add('disabled');
+      const parts = [];
+      let loadedBytes = 0;
+
+      for (let index = 0; index < film.chunks.length; index += 1) {
+        const response = await fetch(film.chunks[index]);
+        if (!response.ok) throw new Error(`Nie udało się pobrać części ${index + 1}.`);
+        const part = await response.arrayBuffer();
+        parts.push(part);
+        loadedBytes += part.byteLength;
+        const progress = Math.min(100, Math.round((loadedBytes / film.size) * 100));
+        progressBar.style.width = `${progress}%`;
+        loadStatus.textContent = `${progress}% · część ${index + 1} z ${film.chunks.length}`;
+      }
+
+      const objectUrl = URL.createObjectURL(new Blob(parts, {type: 'video/mp4'}));
+      setVideoSource(objectUrl);
+      loader.hidden = true;
+      video.hidden = false;
+    }
+
+    loadFilm().catch((error) => {
+      loadStatus.textContent = error.message;
+      progressBar.style.width = '100%';
+      progressBar.style.background = '#ff5b6e';
+    });
   </script>
 </body>
 </html>
