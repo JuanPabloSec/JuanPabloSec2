@@ -1184,7 +1184,12 @@
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item { grid-column: span 1 !important; }
     .websites-preview-head { display: block; }
-    .websites-preview-link { margin-top: 1.25rem; }
+    .websites-preview-link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 1.5rem;
+      width: fit-content;
+    }
     .websites-preview-grid { grid-template-columns: 1fr; }
     .website-preview-card,
     .website-preview-card:first-child { grid-column: span 1; min-height: 240px; }
