@@ -1227,7 +1227,7 @@
     <p class="section-sub reveal">Autorskie grafiki, wizualizacje i koncepcje wideo AI CONIC dla lokalnych firm, produktów, wydarzeń i profili social media.</p>
 
     <div class="portfolio-grid">
-      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo()" aria-label="Odtwórz reklamę wideo restauracji ŻAR Burger House">
+      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/zar-burger-house-reklama-9x16.mp4" data-video-poster="assets/video/zar-burger-house-poster.webp" data-video-label="Reklama ŻAR Burger House" aria-label="Odtwórz reklamę wideo restauracji ŻAR Burger House">
         <img src="assets/video/zar-burger-house-poster.webp" alt="Burger w płomieniach z reklamy restauracji ŻAR Burger House" loading="lazy" decoding="async">
         <span class="portfolio-badge">Odtwórz 9:16</span>
         <span class="portfolio-play" aria-hidden="true">▶</span>
@@ -1263,20 +1263,21 @@
         <span class="portfolio-badge">Pomysł wideo ↗</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Detailing: od piany do lustra</div><div class="overlay-type">Koncepcja wideo · 12 s</div></div></div>
       </a>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-video-coffee.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz koncepcję reklamy wideo lokalnej kawiarni">
-        <img src="assets/portfolio/generated/portfolio-video-coffee.webp" alt="Koncepcja reklamy kawiarni z espresso nalewanym do czarnej filiżanki" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Pomysł wideo ↗</span>
-        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Kawiarnia: pierwszy łyk</div><div class="overlay-type">Koncepcja wideo · 10 s</div></div></div>
-      </a>
+      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/kawa-7-00-reklama-9x16.mp4" data-video-poster="assets/portfolio/generated/portfolio-video-coffee.webp" data-video-label="Reklama KAWA 7:00" aria-label="Odtwórz reklamę wideo KAWA 7:00">
+        <img src="assets/portfolio/generated/portfolio-video-coffee.webp" alt="Reklama wideo KAWA 7:00 z espresso nalewanym do czarnej filiżanki" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Odtwórz 9:16</span>
+        <span class="portfolio-play" aria-hidden="true">▶</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Kawiarnia: pierwszy łyk</div><div class="overlay-type">Video · Social Media</div></div></div>
+      </button>
     </div>
   </div>
 </section>
 
-<div class="video-modal" id="portfolioVideoModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Reklama ŻAR Burger House" onclick="closePortfolioVideoOnBackdrop(event)">
+<div class="video-modal" id="portfolioVideoModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Reklama wideo" onclick="closePortfolioVideoOnBackdrop(event)">
   <div class="video-modal-panel">
     <button class="video-modal-close" type="button" onclick="closePortfolioVideo()" aria-label="Zamknij film">×</button>
-    <video id="portfolioVideo" controls playsinline preload="metadata" poster="assets/video/zar-burger-house-poster.webp">
-      <source src="assets/video/zar-burger-house-reklama-9x16.mp4" type="video/mp4">
+    <video id="portfolioVideo" controls playsinline preload="metadata">
+      <source id="portfolioVideoSource" type="video/mp4">
       Twoja przeglądarka nie obsługuje odtwarzania wideo.
     </video>
   </div>
@@ -1510,9 +1511,17 @@
     if (!wasOpen) item.classList.add('open');
   }
 
-  function openPortfolioVideo() {
+  let activePortfolioVideoTrigger = null;
+
+  function openPortfolioVideo(trigger) {
     const modal = document.getElementById('portfolioVideoModal');
     const video = document.getElementById('portfolioVideo');
+    const source = document.getElementById('portfolioVideoSource');
+    activePortfolioVideoTrigger = trigger;
+    source.src = trigger.dataset.videoSrc;
+    video.poster = trigger.dataset.videoPoster;
+    modal.setAttribute('aria-label', trigger.dataset.videoLabel);
+    video.load();
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -1524,10 +1533,14 @@
     const modal = document.getElementById('portfolioVideoModal');
     const video = document.getElementById('portfolioVideo');
     video.pause();
+    video.removeAttribute('poster');
+    document.getElementById('portfolioVideoSource').removeAttribute('src');
+    video.load();
     modal.hidden = true;
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    document.querySelector('.portfolio-video-trigger').focus();
+    if (activePortfolioVideoTrigger) activePortfolioVideoTrigger.focus();
+    activePortfolioVideoTrigger = null;
   }
 
   function closePortfolioVideoOnBackdrop(event) {
