@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Przykładowe projekty stron internetowych AI CONIC dla restauracji, salonu beauty i firmy budowlano-wnętrzarskiej.">
+  <meta name="theme-color" content="#080a0f">
+  <title>Strony internetowe — portfolio | AI CONIC</title>
+  <link rel="stylesheet" href="portfolio/gallery.css">
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="index.html">AI <span>CONIC</span></a>
+    <a class="back" href="index.html#strony-www">← Wróć na stronę główną</a>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Nowa usługa · Web design</p>
+      <h1>Strony, które od pierwszej sekundy wyglądają profesjonalnie</h1>
+      <p class="lead">Projektuję nowoczesne strony dla lokalnych firm i małych marek. Każdy układ dopasowuję do branży, oferty i najważniejszego celu — telefonu, rezerwacji albo zapytania od klienta.</p>
+    </section>
+
+    <section class="website-features" aria-label="Zakres usługi tworzenia stron internetowych">
+      <div class="website-feature">
+        <strong>Projekt pod Twoją markę</strong>
+        <span>Kolory, zdjęcia, typografia i komunikaty tworzą jeden spójny charakter firmy.</span>
+      </div>
+      <div class="website-feature">
+        <strong>Komputer i telefon</strong>
+        <span>Układ jest projektowany tak, aby był czytelny i wygodny na każdym ekranie.</span>
+      </div>
+      <div class="website-feature">
+        <strong>Gotowa do działania</strong>
+        <span>Kontakt, oferta, mapa, formularz i podstawy SEO mogą być częścią realizacji.</span>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="Galeria projektów stron internetowych">
+      <button class="work website-work" id="mieszko" type="button">
+        <img src="assets/websites/mieszko-bistro.webp" alt="Projekt strony internetowej restauracji MIESZKO Bistro" loading="eager">
+        <span class="caption"><strong>MIESZKO Bistro</strong><span>Restauracja · Rezerwacje</span></span>
+      </button>
+      <button class="work website-work" id="lumea" type="button">
+        <img src="assets/websites/lumea-beauty.webp" alt="Projekt strony internetowej salonu LUMÉA Beauty" loading="lazy">
+        <span class="caption"><strong>LUMÉA</strong><span>Beauty · Umawianie wizyt</span></span>
+      </button>
+      <button class="work website-work" id="forma" type="button">
+        <img src="assets/websites/forma-dom.webp" alt="Projekt strony internetowej firmy FORMA DOM" loading="lazy">
+        <span class="caption"><strong>FORMA DOM</strong><span>Architektura · Remonty · Wnętrza</span></span>
+      </button>
+    </section>
+
+    <section class="contact">
+      <h2>Potrzebujesz strony dla swojej firmy?</h2>
+      <p>Opowiedz mi o branży i celu strony. Przygotuję propozycję wyglądu, zakres oraz indywidualną wycenę.</p>
+      <a class="cta" href="index.html#kontakt">Zapytaj o stronę →</a>
+    </section>
+  </main>
+
+  <footer class="wrap">AI CONIC · Projekty koncepcyjne do portfolio</footer>
+
+  <div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Podgląd projektu strony">
+    <button class="close" type="button" onclick="closeGraphic()" aria-label="Zamknij">×</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">
+  </div>
+  <script src="portfolio/gallery.js"></script>
+</body>
+</html>
