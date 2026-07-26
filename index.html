@@ -592,6 +592,18 @@
     background: #000;
     box-shadow: 0 28px 90px rgba(0,0,0,0.6);
   }
+  .video-modal-shell {
+    display: grid;
+    justify-items: center;
+    gap: 0.9rem;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+  }
+  .video-modal-panel.landscape {
+    width: min(960px, calc(100vw - 2rem));
+    max-height: calc(100vh - 6rem);
+    aspect-ratio: 16/9;
+  }
   .video-modal video {
     display: block;
     width: 100%;
@@ -616,6 +628,20 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.45);
   }
   .video-modal-close:hover { background: var(--accent); color: #080a0f; }
+  .video-modal-hd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.72rem 1rem;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 999px;
+    background: #111520;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+  }
+  .video-modal-hd:hover { border-color: var(--accent); color: var(--accent); }
 
   /* PRICING */
   .pricing-grid {
@@ -1227,43 +1253,44 @@
     <p class="section-sub reveal">Autorskie grafiki, wizualizacje i koncepcje wideo AI CONIC dla lokalnych firm, produktów, wydarzeń i profili social media.</p>
 
     <div class="portfolio-grid">
-      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/zar-burger-house-reklama-9x16.mp4" data-video-poster="assets/video/zar-burger-house-poster.webp" data-video-label="Reklama ŻAR Burger House" aria-label="Odtwórz reklamę wideo restauracji ŻAR Burger House">
+      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/zar-burger-house-reklama-9x16.mp4" data-video-poster="assets/video/zar-burger-house-poster.webp" data-video-label="Reklama ŻAR Burger House" data-video-ratio="portrait" data-hd-url="video-hd.html?film=burger" aria-label="Odtwórz reklamę wideo restauracji ŻAR Burger House">
         <img src="assets/video/zar-burger-house-poster.webp" alt="Burger w płomieniach z reklamy restauracji ŻAR Burger House" loading="lazy" decoding="async">
         <span class="portfolio-badge">Odtwórz 9:16</span>
         <span class="portfolio-play" aria-hidden="true">▶</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Spot dla restauracji</div><div class="overlay-type">Video · Social Media</div></div></div>
       </button>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-barber-campaign.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę kampanii NOVA Barber Studio">
+      <a class="portfolio-item reveal" href="portfolio/barber.html" aria-label="Zobacz serię grafik kampanii NOVA Barber Studio">
         <img src="assets/portfolio/generated/portfolio-barber-campaign.webp" alt="Grafika reklamowa NOVA Barber Studio z promocją pierwszego cięcia" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Grafika ↗</span>
+        <span class="portfolio-badge">3 projekty →</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Kampania dla barbera</div><div class="overlay-type">Grafika · Lokalna promocja</div></div></div>
       </a>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-beauty-campaign.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę kampanii LUMI Beauty Studio">
+      <a class="portfolio-item reveal" href="portfolio/beauty.html" aria-label="Zobacz serię grafik kampanii LUMÉA Beauty">
         <img src="assets/portfolio/generated/portfolio-beauty-campaign.webp" alt="Jasna grafika reklamowa LUMI Beauty Studio" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Grafika ↗</span>
+        <span class="portfolio-badge">3 projekty →</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Promocja salonu beauty</div><div class="overlay-type">Grafika · Instagram</div></div></div>
       </a>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-perfume-product.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną wizualizację produktu NOIR 07">
+      <a class="portfolio-item reveal" href="portfolio/product.html" aria-label="Zobacz serię wizualizacji produktu NOIR 07">
         <img src="assets/portfolio/generated/portfolio-perfume-product.webp" alt="Luksusowa wizualizacja czarnych perfum NOIR 07" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Produkt ↗</span>
+        <span class="portfolio-badge">3 projekty →</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Wizualizacja produktu premium</div><div class="overlay-type">E-commerce · Reklama</div></div></div>
       </a>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-fitness-stories.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę pakietu Stories PULSE">
+      <a class="portfolio-item reveal" href="portfolio/fitness.html" aria-label="Zobacz serię grafik dla PULSE Club">
         <img src="assets/portfolio/generated/portfolio-fitness-stories.webp" alt="Pakiet trzech Stories dla studia fitness PULSE" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Social ↗</span>
+        <span class="portfolio-badge">3 projekty →</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Pakiet Stories dla fitness</div><div class="overlay-type">Social Media · Branding</div></div></div>
       </a>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-local-event.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz pełną grafikę wydarzenia Nocne Granie">
+      <a class="portfolio-item reveal" href="portfolio/event.html" aria-label="Zobacz serię grafik wydarzeń lokalnych">
         <img src="assets/portfolio/generated/portfolio-local-event.webp" alt="Grafika promująca lokalne wydarzenie muzyczne Nocne Granie" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Event ↗</span>
+        <span class="portfolio-badge">3 projekty →</span>
         <div class="overlay"><div class="overlay-text"><div class="overlay-title">Promocja wydarzenia lokalnego</div><div class="overlay-type">Event · Social Media</div></div></div>
       </a>
-      <a class="portfolio-item reveal" href="assets/portfolio/generated/portfolio-video-detailing.webp" target="_blank" rel="noopener noreferrer" aria-label="Zobacz koncepcję reklamy wideo studia auto detailingu">
-        <img src="assets/portfolio/generated/portfolio-video-detailing.webp" alt="Koncepcja wideo DETAIL LAB z czarnym samochodem i pianą" loading="lazy" decoding="async">
-        <span class="portfolio-badge">Pomysł wideo ↗</span>
-        <div class="overlay"><div class="overlay-text"><div class="overlay-title">Detailing: od piany do lustra</div><div class="overlay-type">Koncepcja wideo · 12 s</div></div></div>
-      </a>
-      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/kawa-7-00-reklama-v2-9x16.mp4" data-video-poster="assets/portfolio/generated/portfolio-video-coffee.webp" data-video-label="Reklama KAWA 7:00" aria-label="Odtwórz reklamę wideo KAWA 7:00">
+      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/detail-lab-reklama-web-16x9.mp4" data-video-poster="assets/video/detail-lab-poster.webp" data-video-label="Reklama DETAIL LAB" data-video-ratio="landscape" data-hd-url="video-hd.html?film=detailing" aria-label="Odtwórz reklamę wideo DETAIL LAB">
+        <img src="assets/video/detail-lab-poster.webp" alt="Czarny samochód w reklamie DETAIL LAB" loading="lazy" decoding="async">
+        <span class="portfolio-badge">Odtwórz 16:9</span>
+        <span class="portfolio-play" aria-hidden="true">▶</span>
+        <div class="overlay"><div class="overlay-text"><div class="overlay-title">DETAIL LAB: od piany do lustra</div><div class="overlay-type">Video · Full HD 60 fps</div></div></div>
+      </button>
+      <button class="portfolio-item portfolio-video-trigger reveal" type="button" onclick="openPortfolioVideo(this)" data-video-src="assets/video/kawa-7-00-reklama-v2-9x16.mp4" data-video-poster="assets/portfolio/generated/portfolio-video-coffee.webp" data-video-label="Reklama KAWA 7:00" data-video-ratio="portrait" data-hd-url="video-hd.html?film=coffee" aria-label="Odtwórz reklamę wideo KAWA 7:00">
         <img src="assets/portfolio/generated/portfolio-video-coffee.webp" alt="Reklama wideo KAWA 7:00 z espresso nalewanym do czarnej filiżanki" loading="lazy" decoding="async">
         <span class="portfolio-badge">Odtwórz 9:16</span>
         <span class="portfolio-play" aria-hidden="true">▶</span>
@@ -1274,12 +1301,15 @@
 </section>
 
 <div class="video-modal" id="portfolioVideoModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Reklama wideo" onclick="closePortfolioVideoOnBackdrop(event)">
-  <div class="video-modal-panel">
-    <button class="video-modal-close" type="button" onclick="closePortfolioVideo()" aria-label="Zamknij film">×</button>
-    <video id="portfolioVideo" controls playsinline preload="metadata">
-      <source id="portfolioVideoSource" type="video/mp4">
-      Twoja przeglądarka nie obsługuje odtwarzania wideo.
-    </video>
+  <div class="video-modal-shell">
+    <div class="video-modal-panel">
+      <button class="video-modal-close" type="button" onclick="closePortfolioVideo()" aria-label="Zamknij film">×</button>
+      <video id="portfolioVideo" controls playsinline preload="metadata">
+        <source id="portfolioVideoSource" type="video/mp4">
+        Twoja przeglądarka nie obsługuje odtwarzania wideo.
+      </video>
+    </div>
+    <a class="video-modal-hd" id="portfolioVideoHd" href="video-hd.html">Obejrzyj lub pobierz pełną wersję HD →</a>
   </div>
 </div>
 
@@ -1517,9 +1547,13 @@
     const modal = document.getElementById('portfolioVideoModal');
     const video = document.getElementById('portfolioVideo');
     const source = document.getElementById('portfolioVideoSource');
+    const panel = modal.querySelector('.video-modal-panel');
+    const hdLink = document.getElementById('portfolioVideoHd');
     activePortfolioVideoTrigger = trigger;
     source.src = trigger.dataset.videoSrc;
     video.poster = trigger.dataset.videoPoster;
+    panel.classList.toggle('landscape', trigger.dataset.videoRatio === 'landscape');
+    hdLink.href = trigger.dataset.hdUrl;
     modal.setAttribute('aria-label', trigger.dataset.videoLabel);
     video.load();
     modal.hidden = false;
@@ -1534,6 +1568,7 @@
     const video = document.getElementById('portfolioVideo');
     video.pause();
     video.removeAttribute('poster');
+    modal.querySelector('.video-modal-panel').classList.remove('landscape');
     document.getElementById('portfolioVideoSource').removeAttribute('src');
     video.load();
     modal.hidden = true;

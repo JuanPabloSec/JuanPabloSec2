@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Pełne wersje HD reklam wideo AI CONIC — oglądanie i pobieranie.">
+  <title>Wideo HD | AI CONIC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+    :root{--bg:#080a0f;--panel:#11151e;--text:#f6f8fc;--muted:#98a3b5;--accent:#00e5ff;--line:rgba(255,255,255,.1)}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0,rgba(0,229,255,.12),transparent 32rem),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif}
+    a{color:inherit}.wrap{width:min(1100px,calc(100% - 2rem));margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem}.brand{font:800 1.05rem "Syne",sans-serif;letter-spacing:.1em;text-decoration:none}.brand span{color:var(--accent)}.back{border:1px solid var(--line);border-radius:999px;padding:.65rem 1rem;text-decoration:none;font-size:.85rem}
+    main{padding:4rem 0 5rem}.eyebrow{color:var(--accent);font-size:.75rem;letter-spacing:.17em;text-transform:uppercase;margin:0 0 1rem}h1{font:800 clamp(2.5rem,7vw,5.2rem)/.96 "Syne",sans-serif;letter-spacing:-.05em;margin:0;max-width:900px}.lead{max-width:700px;color:var(--muted);line-height:1.7;font-size:1.05rem;margin:1.4rem 0 2.5rem}
+    .player-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);box-shadow:0 30px 100px rgba(0,0,0,.35)}.screen{position:relative;display:grid;place-items:center;min-height:340px;background:#000}.screen.landscape{aspect-ratio:16/9}.screen.portrait{width:min(430px,100%);aspect-ratio:9/16;max-height:72vh;margin:auto}.screen img,.screen video{display:block;width:100%;height:100%;object-fit:contain;background:#000}.screen video[hidden]{display:none}
+    .loader{position:absolute;inset:0;display:grid;place-items:center;padding:2rem;background:rgba(0,0,0,.5);text-align:center}.loader[hidden]{display:none}.loader strong{display:block;font:700 1.1rem "Syne",sans-serif}.progress{width:min(420px,75vw);height:7px;margin:1rem auto .65rem;border-radius:999px;background:rgba(255,255,255,.16);overflow:hidden}.bar{height:100%;width:0;background:var(--accent);transition:width .2s}.status{color:#dce5ef;font-size:.85rem}
+    .actions{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;padding:1.25rem}.button{appearance:none;border:1px solid var(--accent);border-radius:999px;padding:.8rem 1.1rem;background:var(--accent);color:#05080c;text-decoration:none;font:700 .88rem "DM Sans",sans-serif;cursor:pointer}.button.secondary{background:transparent;color:var(--text);border-color:var(--line)}.button[disabled],.button.disabled{opacity:.45;pointer-events:none}.meta{margin-left:auto;color:var(--muted);font-size:.8rem}
+    .note{display:flex;gap:.8rem;margin-top:1.25rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:14px;color:var(--muted);font-size:.88rem;line-height:1.55}.note b{color:var(--text)}
+    .switcher{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2.5rem}.switcher a{padding:.65rem .9rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.82rem}.switcher a.current{border-color:var(--accent);color:var(--accent)}
+    @media(max-width:650px){main{padding-top:2.5rem}.screen{min-height:240px}.actions{align-items:stretch}.button{text-align:center;flex:1 1 100%}.meta{margin:0;width:100%;text-align:center}}
+  </style>
+</head>
+<body>
+  <header class="wrap top"><a class="brand" href="index.html">AI <span>CONIC</span></a><a class="back" href="index.html#portfolio">← Portfolio</a></header>
+  <main class="wrap">
+    <p class="eyebrow">Pełna wersja · oryginalna jakość</p>
+    <h1 id="title">Wideo HD</h1>
+    <p class="lead" id="description"></p>
+    <section class="player-card">
+      <div class="screen" id="screen">
+        <video id="video" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="actions">
+        <a class="button" id="openButton" href="#" target="_blank" rel="noopener">Otwórz plik HD ↗</a>
+        <a class="button secondary" id="downloadButton" href="#" download>Pobierz plik MP4</a>
+        <span class="meta" id="meta"></span>
+      </div>
+    </section>
+    <div class="note"><span>ⓘ</span><span><b>Pełna długość i jakość HD.</b> Filmy są hostowane bezpośrednio na GitHubie. DETAIL LAB zachowuje rozdzielczość 1920×1080 i płynność 60 kl./s w wydajnie zakodowanym pliku H.264.</span></div>
+    <nav class="switcher" aria-label="Pozostałe filmy">
+      <a href="?film=burger" data-film="burger">ŻAR Burger House</a>
+      <a href="?film=coffee" data-film="coffee">KAWA 7:00</a>
+      <a href="?film=detailing" data-film="detailing">DETAIL LAB</a>
+    </nav>
+  </main>
+  <script>
+    const films = {
+      burger: {
+        title: 'ŻAR Burger House',
+        description: 'Pełna reklama restauracji w pionowym formacie social media.',
+        src: 'assets/video/hd/zar-burger-house-HD.mp4',
+        filename: 'zar-burger-house-HD.mp4',
+        size: 12264163, sizeLabel: '12,3 MB', resolution: '720 × 1280 · 30 fps',
+        ratio: 'portrait', poster: 'assets/video/zar-burger-house-poster.webp'
+      },
+      coffee: {
+        title: 'KAWA 7:00',
+        description: 'Pełna pionowa reklama kawiarni w natywnej rozdzielczości.',
+        src: 'assets/video/hd/kawa-7-00-HD.mp4',
+        filename: 'kawa-7-00-HD.mp4',
+        size: 9788847, sizeLabel: '9,8 MB', resolution: '1080 × 1896 · 30 fps',
+        ratio: 'portrait', poster: 'assets/portfolio/generated/portfolio-video-coffee.webp'
+      },
+      detailing: {
+        title: 'DETAIL LAB',
+        description: 'Gotowy spot auto detailingu w pełnej jakości Full HD i płynności 60 kl./s.',
+        src: 'assets/video/hd/detail-lab-HD-1080p60.mp4',
+        filename: 'detail-lab-HD-1080p60.mp4',
+        size: 38345901, sizeLabel: '38,3 MB', resolution: '1920 × 1080 · 60 fps',
+        ratio: 'landscape', poster: 'assets/video/detail-lab-poster.webp'
+      }
+    };
+
+    const key = new URLSearchParams(location.search).get('film');
+    const filmKey = films[key] ? key : 'burger';
+    const film = films[filmKey];
+    const title = document.getElementById('title');
+    const description = document.getElementById('description');
+    const screen = document.getElementById('screen');
+    const video = document.getElementById('video');
+    const openButton = document.getElementById('openButton');
+    const downloadButton = document.getElementById('downloadButton');
+
+    document.title = `${film.title} — pełna wersja HD | AI CONIC`;
+    title.textContent = film.title;
+    description.textContent = film.description;
+    screen.classList.add(film.ratio);
+    video.src = film.src;
+    video.poster = film.poster;
+    video.setAttribute('aria-label', `Pełna reklama ${film.title}`);
+    openButton.href = film.src;
+    downloadButton.href = film.src;
+    downloadButton.download = film.filename;
+    document.getElementById('meta').textContent = `${film.resolution} · ${film.sizeLabel}`;
+    document.querySelector(`[data-film="${filmKey}"]`).classList.add('current');
+  </script>
+</body>
+</html>
